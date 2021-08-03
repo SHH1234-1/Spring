@@ -1,0 +1,22 @@
+package chapter1;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml"); //beans.xml에 담긴 정보들을 저장하는 ApplicationContext클래스의 context 객체 
+		HelloSpring helloSpring = (HelloSpring)context.getBean("helloSpring"); //context객체에 getBean을해서 bean에 연결시키고 getBean할 빈의 명(helloSpring)을 HelloSpring클래스의 helloSpring객체에 저장시킨다
+		System.out.println(helloSpring.getMessage());  //출력 출력형태 : Hello_Java!
+ 
+	}
+
+	public static void main2(String[] args) {
+		HelloSpring helloSpring = new HelloSpring();
+		helloSpring.setMessage("hello_spring!");
+		System.out.println(helloSpring.getMessage());
+
+	}
+
+}
