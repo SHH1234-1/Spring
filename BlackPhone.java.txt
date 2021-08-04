@@ -1,0 +1,24 @@
+package chapter2;
+
+public class BlackPhone implements Phone {
+	private Battery battery;  //멤버변수
+	
+	public BlackPhone() { /생성자
+		
+	}
+	
+	public BlackPhone(Battery battery) {  //BlackPhone 메소드 생성자
+		super();
+		this.battery = battery; //battery2
+	}
+
+	public void setBattery(Battery battery) {  
+		this.battery = battery;  // newBattery1
+	}
+
+	@Override
+	public void show() {
+		System.out.println(this.getClass().getSimpleName() + ":" + battery.getBatteryName());
+	}
+
+}

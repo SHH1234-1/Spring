@@ -1,0 +1,5 @@
+package chapter2;
+
+public interface Phone {  //Phone 이라는 인터페이스 생성
+	public void show(); // 메소드
+}

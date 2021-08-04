@@ -1,0 +1,21 @@
+package chapter2;
+
+public class Battery {
+	private String batteryName;
+	
+	public Battery() {
+	}
+	
+	public Battery(String batteryName) { //생성자 
+		super();
+		this.batteryName = batteryName; //
+	}
+
+	public String getBatteryName() {
+		return batteryName;
+	}
+
+	public void setBatteryName(String batteryName) { //
+		this.batteryName = batteryName;
+	}
+}
