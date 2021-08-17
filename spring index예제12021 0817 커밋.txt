@@ -1,0 +1,77 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junil blog</title>
+    <script src="https://kit.fontawesome.com/c3df4d7d1c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <div id="container">
+    	<c:choose>
+    		<c:when test="${empty loginUserBean }">
+    			<jsp:include page="/WEB-INF/views/header_login.jsp"></jsp:include>
+    		</c:when>
+    		<c:otherwise>
+    			<jsp:include page="/WEB-INF/views/header_logout.jsp"></jsp:include>
+    		</c:otherwise>
+    	</c:choose>
+    	
+        <main>
+            <article id="mainimage">
+                <div id="swiper-container__id" class="swiper-container">
+			        <div class="swiper-wrapper">
+			            <div class="swiper-slide"><img src="images/s1.png" width="100%"></div>
+			            <div class="swiper-slide"><img src="images/s2.png" width="100%"></div>
+			            <div class="swiper-slide"><img src="images/s3.png" width="100%"></div>
+			        </div>
+			
+			        <div class="swiper-pagination"></div>
+			        <div class="swiper-button-prev"></div>
+			        <div class="swiper-button-next"></div>
+			    </div>
+            </article>
+            <article id="mainboard">
+               
+            </article>
+        </main>
+        
+        <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
+        
+    </div>
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="js/swiper.js"></script>
+</body>
+</html>
+---------------------------------------------------------------------------------------------------------------------
+
+package com.spring.mvc.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller//컨트롤러
+public class MainController {
+	//뷰의 요청 경로지정
+	@RequestMapping(value = "/index", method = RequestMethod.GET) //value = "/index" 클라이언트가 요청한 URL을  RequestMethod.GET GET방식으로 VIEW에게 넘겨줌
+	public ModelAndView index() {
+		return new ModelAndView("/index"); //ModelAndView의 객체를 생성해서 그것을 index페이지로 넘겨줌
+	}
+
+}
+-------------------------------------------------------------------------------------------------------------------------------
+
+<%
+	response.sendRedirect("/index"); //@Controller에서 넘겨받은 view를 실행하는 파일
+%>
+
